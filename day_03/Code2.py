@@ -24,7 +24,7 @@ tree_c= 0       # count of trees on the pathway
 vector_r = 0    #the amount of spaces that are moved right
 vector_d = 0    #the amount of spaces that are moved down
 
-input = open("input.txt","r")
+input = open("input2.txt","r")
 
 dirty_i=input.readlines()
 
@@ -35,21 +35,21 @@ def track(vector_r,vector_d):
     for line in dirty_i:
         index = index +1
         map_t = []
-        pos_c = ((index*vector_r)%31)+1 
+        pos_c = ((index*vector_r)%11)+1 
         pos_i = pos_c -1
         if index%vector_d == 0:
             for spot in line:
                 map_t.append(spot)
             if map_t[pos_i] == "#":
                 tree_c = tree_c +1
-    print("slope "+ str(vector_r) + " Right, " + str(vector_d) + " Down: " + str(tree_c))
+            print(line)
+    print("Right"+ str(vector_r) + " Down, " + str(vector_d) + " Trees: " + str(tree_c))
 
-track(vector_r=1,vector_d=1)
+track(vector_r=3,vector_d=1)
 track(vector_r=3,vector_d=1)
 track(vector_r=5,vector_d=1)
 track(vector_r=7,vector_d=1)
 track(vector_r=1,vector_d=2)
-
 '''
 index = -1
 tree_c2 = 0
