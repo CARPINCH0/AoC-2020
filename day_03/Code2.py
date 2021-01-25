@@ -20,6 +20,7 @@ index = -1       # the number of the line we are sitting on, this needs to be -1
 map_t = []      # a list containing all the values of a single line of the input.
 pos_c= 0   # the current mathematical position we are standing on.
 pos_i= 0   # the current index position we are standing on 
+pos_x = 0  # the count of how many steps we have taken
 tree_c= 0       # count of trees on the pathway
 vector_r = 0    #the amount of spaces that are moved right
 vector_d = 0    #the amount of spaces that are moved down
@@ -29,23 +30,23 @@ input = open("input2.txt","r")
 dirty_i=input.readlines()
 
 def track(vector_r,vector_d):
-    index = 0
+    index = -1
     tree_c = 0
-
+    pos_x = -1
     for line in dirty_i:
         index = index +1
         map_t = []
-        pos_c = ((index*vector_r)%11)+1 
-        pos_i = pos_c -1
         if index%vector_d == 0:
+            pos_x = pos_x+1
+            pos_c = ((pos_x*vector_r)%11)+1 
+            pos_i = pos_c -1
             for spot in line:
                 map_t.append(spot)
             if map_t[pos_i] == "#":
                 tree_c = tree_c +1
-            print(line)
-    print("Right"+ str(vector_r) + " Down, " + str(vector_d) + " Trees: " + str(tree_c))
+    print("Right: "+ str(vector_r) + ", Down: " + str(vector_d) + ", Trees: " + str(tree_c))
 
-track(vector_r=3,vector_d=1)
+track(vector_r=1,vector_d=2)
 track(vector_r=3,vector_d=1)
 track(vector_r=5,vector_d=1)
 track(vector_r=7,vector_d=1)
