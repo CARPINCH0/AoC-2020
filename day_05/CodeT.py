@@ -20,10 +20,9 @@ def breakpoint (min,max)
     upper half = (mid-point, max)
 
 '''
-
+sitL = []
 with open('input.txt', 'r') as input:
-
-    sitL = []
+    global sitL
 
     for line in input:
         count = 0
@@ -49,4 +48,29 @@ with open('input.txt', 'r') as input:
                 code = (minv*8)+minh
                 sitL.append(code)
                 #print (character + " minv :" + str(minv) + "," + " maxv :" + str(maxv) + "," + " minh :" + str(minh) + "," + " maxh :" + str(maxh) + " mid-point h: " + str(mid_pointh) + " mid-point v: " + str(mid_pointv))
-    print (max(sitL))
+#    print (max(sitL))
+
+
+matrix = []
+rowsN = 128
+rows = [iter * 8 for iter in range(rowsN)]
+#print (L)
+
+
+for i in rows:
+    matrix.append(i+1)
+    matrix.append(i+2)
+    matrix.append(i+3)
+    matrix.append(i+4)
+    matrix.append(i+5)
+    matrix.append(i+6)
+    matrix.append(i+7)
+
+
+def Diff(matrix, sitL):
+    li_dif = [i for i in matrix + sitL if i not in matrix or i not in sitL]
+    return li_dif
+ 
+
+li3 = Diff(matrix, sitL)
+print("open seats: " + str(li3))
