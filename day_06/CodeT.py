@@ -36,6 +36,6 @@ def spit_questions(input, group, questions):
     return group
 
 
-with open('input.txt', 'r') as input:
+with open('inputT.txt', 'r') as input:
     group = spit_questions(input, group, questions)
 

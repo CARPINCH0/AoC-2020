@@ -56,6 +56,7 @@ the answer to this vertical positon is 44
 
 '''
 
+# this function 
 def initialize_list():
     seat_list = []
     with open('input.txt', 'r') as input:
@@ -86,7 +87,6 @@ def initialize_list():
                     seat_list.append(code)
         print (max(seat_list))
         return seat_list
-                    #print (character + " minv :" + str(minv) + "," + " maxv :" + str(maxv) + "," + " minh :" + str(minh) + "," + " maxh :" + str(maxh) + " mid-point h: " + str(mid_pointh) + " mid-point v: " + str(mid_pointv))
 
 
 seat_list = initialize_list()
@@ -94,7 +94,6 @@ seat_list = initialize_list()
 matrix = []
 rowsN = 128
 rows = [iter * 8 for iter in range(rowsN)]
-#print (L)
 
 
 for i in rows:
@@ -108,6 +107,13 @@ for i in rows:
 
 
 def Diff(matrix, seat_list):
+    """Looks at the difference between all asigned seats on the plane and all posible seats on the plane
+
+        Args: all possible seats and all assigned seats
+
+        Returns: nothing
+
+    """
     li_dif = [i for i in matrix + seat_list if i not in seat_list]
     return li_dif
 
