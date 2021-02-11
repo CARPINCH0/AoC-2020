@@ -1,70 +1,71 @@
+#!/usr/bin/env python3
+
 '''
+
 each letter signifies a question that was answered positively
 
 each empty line indicates a new group
 
-going to create a line_count of all the unique question1 that have been answered by everyone
+the objective of this excercise is to create a count of how many times each groups have had the same answers to the same questions, and add that count across groups
 
+the first step is to splitline the input into a list of strings containing all the individual answers separated by commas, and each group separated by an empty space.
+
+after the lines are 
 
 '''
 
-
-question1 = {0} #a set containing all the answers that were shared across a group of people
-question2 = {0}
-line_count = 0 # the number of people in a group
-question_count = 0 # the number of same question1 that were answered by a group across all groups
-shared_questions = {0} # the total list of quesions for a particular group
     
-def solve(input):
-    """ Splits the input into different groups and people
+def solve():
+    """ Open the input.txt file as input, splits the input into different groups and people
 
-    Args: list of strings, representing the answers for everyone in the plane
-
-    Returns: a set of shared answers between the group
+        Returns: a set of shared answers between the group
     """
-    line_count = 0
-    shared_questions = set()
-    question1 = set()
-    question2 = set()
-    question_count = 0
-    for line in input:
-        line_count = line_count+1
-        if line != "\n":
-                split_and_compare_quesions(character,line_count)
+    
+    def read_input(input):
+        """ splits the input into a list of comma separated values 
+            Args: the input that is to be split
 
-        else:
+            Return: the input split into a list
+        """
+        with open(input, 'r') as openned_input:
+            clean_input = openned_input.read().splitlines()
+            return clean_input
+    
+    def groups (clean_input):
+        """ splits the clean_input list into sets containing the groups and counts the number of shared answers in each
+        
+            Args: the clean_input list of comma separated answers with an empty space separating the groups
 
-            question_count = question_count + len(shared_questions)
-"""            print ("shared questions: " + str(shared_questions))
-            print("share question count: " + str(len(shared_questions)))"""
-            print("running count: " + str(question_count))
-            print("")
-    return (question_count)
+            Return: running_count; the count of answers they have in common
+        """
+        answers = set()
+        for person in clean_input:
+            running_count = 0
+            if person:
+                print(person)
+                answers.add(person)
 
-def split_and_compare_quesions (character,line_count):
-    """ splits the string of each individual person by their answers and compares them to the other answers in the group
+            else:
+                print(answers)
+                group = answers[0].intersection(*answers)
+                answers= set()
+                shared_question_count = len(group)
+                running_count = shared_question_count + running_count
+        return running_count
 
-    Args:
-        character: the questions that were answered as yes
-        line_count: the number of lines in the group so far
-    """
-    question1 =set()
-    question2 =set()
-    shared_questions =set()
-    for character in line:
-        if character != "\n":
-            question1.add(character)
-        else:
-            if line_count == 1:
-                question2 = question1
-            shared_questions = question1.intersection(question2)
-            print("question1: " + str(question1))
-            print("question2: " + str(question2))
-        return shared_questions
-
-def reset_and_count()
-    """ resets the fields for the next questions and counts up the total number of shared answers across groups
+    clean_input = read_input("inputT.txt")
+    result = groups(clean_input)
+    print(result)
 
 
-with open('input.txt', 'r') as input:
-     solve(input)
+
+def main():
+    solve()
+
+if __name__ == "__main__":
+    main()
+
+
+""" Create tests for each function and rebuild the code structure so that the functions can be called individually for testing"""
+
+
